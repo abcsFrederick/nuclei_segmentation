@@ -36,4 +36,5 @@ class Janowczyk(dataset.Dataset):
     def labeled_image(self, image_filename, label_filename):
         image = Image.open(os.path.join(self.path, image_filename))
         label = Image.open(os.path.join(self.path, label_filename))
+        label = label.convert('L')
         return image, label

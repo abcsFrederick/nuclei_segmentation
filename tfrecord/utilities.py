@@ -52,8 +52,3 @@ def _preprocess(image, label):
     offset = tf.subtract(scaled, tf.constant(1, dtype=tf.float32))
     label = tf.divide(label, tf.constant(255, dtype=tf.float32))
     return offset, label
-
-
-def _weight_size(image, label):
-    print(tf.shape(image))
-    return False

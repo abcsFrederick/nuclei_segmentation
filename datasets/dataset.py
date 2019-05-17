@@ -7,6 +7,9 @@ class Dataset(object):
     def __init__(self, path):
         self._path = path
 
+    def __len__(self):
+        return len(list(self._filenames))
+
     @property
     def path(self):
         return os.path.join(self._path, self.subdirectory)

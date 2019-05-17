@@ -28,10 +28,10 @@ class MoNuSeg(dataset.Dataset):
         yield from map(self.polygon, regions)
 
     def label(self, filename, size):
-        mask = Image.new('1', size)
+        mask = Image.new('L', size)
         document = xml.dom.minidom.parse(filename)
         for polygon in self.regions(document):
-            ImageDraw.Draw(mask).polygon(polygon, fill=1, outline=1)
+            ImageDraw.Draw(mask).polygon(polygon, fill=255, outline=255)
         return mask
 
     def labeled_image(self, image_filename, label_filename):
