@@ -47,6 +47,16 @@ def _random_crop(size, seed=None):
     return f
 
 
+def _weight_size(size):
+    def f(image, label):
+        shape = tf.shape(image)
+        v = tf.divide(tf.multiply(tf.gather(shape, 0), tf.gather(shape, 1)),
+                      tf.constant(size[0] * size[1]))
+        r = tf.random_uniform([])
+        return tf.less(r, tf.cast(v, tf.float32))
+    return f
+
+
 def _preprocess(image, label):
     scaled = tf.divide(image, tf.constant(127.5, dtype=tf.float32))
     offset = tf.subtract(scaled, tf.constant(1, dtype=tf.float32))
