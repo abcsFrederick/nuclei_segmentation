@@ -5,3 +5,9 @@ def _affix_keyfunc(*affixes):
                 return v[len(prefix):-len(suffix)]
         return v
     return keyfunc
+
+def _affix_test(string, affixes):
+    for prefix, suffix in affixes:
+        if string.startswith(prefix) and string.endswith(suffix):
+            return True
+    return False
