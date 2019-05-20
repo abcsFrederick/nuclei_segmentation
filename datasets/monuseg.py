@@ -10,7 +10,7 @@ from . import utilities
 
 
 class MoNuSeg(dataset.Dataset):
-    subdirectory = os.path.join('MICCAI18_MoNuSeg', 'MoNuSeg Training Data')
+    subdirectory = 'MoNuSeg Training Data'
     affixes = {
         'image': ('', '.tif'),
         'label': ('', '.xml'),
